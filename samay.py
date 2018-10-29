@@ -1,11 +1,19 @@
 from datetime import datetime,timedelta
 import re
-class moment:
+class samay:
 
 	def __init__(self,mtime=None):
 		if mtime != None:
 			if isinstance(mtime,datetime):
 				self.mtime = mtime
+			elif isinstance(mtime,int):
+				try:
+					if len(str(mtime)) > 10:
+						self.mtime = datetime.fromtimestamp(mtime//1000)
+					else:
+						self.mtime = datetime.fromtimestamp(mtime)
+				except:
+					print('Argument must be of epoc time')
 			else:
 				try:
 					Checkermtime = mtime.split(":")
@@ -14,7 +22,7 @@ class moment:
 					elif len(Checkermtime)==3:
 						self.mtime = datetime.strptime(mtime,"%Y-%m-%d %H:%M:%S")
 				except Exception as e:
-					raise Exception('Argument must be of format YYYY-MM-DD HH:mm')
+					print('Argument must be of format YYYY-MM-DD HH:mm')
 		else:
 			self.mtime = datetime.now()
 
