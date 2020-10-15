@@ -9,9 +9,9 @@ class samay(object):
 			elif isinstance(mtime,int):
 				try:
 					if len(str(mtime)) > 10:
-						self.__mtime = datetime.fro__mtimestamp(mtime//1000)
+						self.__mtime = datetime.fromtimestamp(mtime//1000)
 					else:
-						self.__mtime = datetime.fro__mtimestamp(mtime)
+						self.__mtime = datetime.fromtimestamp(mtime)
 				except:
 					print('Argument must be of epoch time')
 			else:
